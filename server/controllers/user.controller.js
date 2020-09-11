@@ -1,6 +1,6 @@
 import User from '../models/user'
 import extend from 'lodash/extend'
-//import errorHandler from './error.controller'
+import errorHandler from './error.controller'
 
 const create = async (req, res) => {
     const user = new User(req.body)
@@ -19,7 +19,7 @@ const list = async (req, res) => {
     try {
         let users = await User.findAll({
             attributes: [
-              'id', 'name', 'email','createdAt','updatedAt']})
+              'id', 'name', 'username', 'email','createdAt','updatedAt']})
       res.json(users)
     } catch (err) {
       return res.status(400).json({
